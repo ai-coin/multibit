@@ -920,6 +920,7 @@ public class WalletTest extends TestWithWallet {
     @Test
     public void transactionsList() throws Exception {
         // Check the wallet can give us an ordered list of all received transactions.
+        setMockClock();
         Utils.rollMockClock(0);
         Transaction tx1 = sendMoneyToWallet(Utils.toNanoCoins(1, 0), AbstractBlockChain.NewBlockType.BEST_CHAIN);
         Utils.rollMockClock(60 * 10);
@@ -929,7 +930,7 @@ public class WalletTest extends TestWithWallet {
         assertEquals(tx2, transactions.get(0));
         assertEquals(tx1, transactions.get(1));
         assertEquals(2, transactions.size());
-        // Check we get only the last transaction if we request a subrage.
+        // Check we get only the last transaction if we request a subrange.
         transactions = wallet.getRecentTransactions(1, false);
         assertEquals(1, transactions.size());
         assertEquals(tx2,  transactions.get(0));

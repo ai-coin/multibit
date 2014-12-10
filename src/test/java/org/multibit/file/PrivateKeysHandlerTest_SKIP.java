@@ -33,7 +33,7 @@ import java.util.Collection;
 
 
 
-public class PrivateKeysHandlerTest extends TestCase {
+public class PrivateKeysHandlerTest_SKIP extends TestCase {
     public static final String PRIVATE_KEYS_TESTDATA_DIRECTORY = "privateKeys";
 
     public static final String TEST1_WALLET_FILE = "test1.wallet";
@@ -97,7 +97,7 @@ public class PrivateKeysHandlerTest extends TestCase {
 
         Collection<PrivateKeyAndDate> parsedPrivateKeysAndDates = privateKeysHandler.readInPrivateKeys(new File(expectedPrivateKeysFile), null);
         
-        //System.out.println("PrivateKeysHandlerTest#testImport parsedPrivateKeysAndDates = '" + parsedPrivateKeysAndDates + "'");
+        //System.out.println("PrivateKeysHandlerTest_SKIP#testImport parsedPrivateKeysAndDates = '" + parsedPrivateKeysAndDates + "'");
         assertNotNull(parsedPrivateKeysAndDates);
         assertEquals(7, parsedPrivateKeysAndDates.size());
         

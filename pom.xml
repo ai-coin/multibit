@@ -692,8 +692,7 @@
         <dependency>
             <groupId>com.google</groupId>
             <artifactId>bitcoinj</artifactId>
-            <version>${bitcoinj.version}</version>
-            <scope>compile</scope>
+            <version>0.11.2-MB-ALICE</version>
         </dependency>
          <dependency>
             <groupId>com.xeiam.xchange</groupId>

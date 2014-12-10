@@ -36,18 +36,18 @@ public class WalletInfoTest extends TestCase {
 
     public static final String NON_EXISTENT_WALLET = "nonExistentWallet.wallet";
 
-    public static final String EXAMPLE_RECEIVING_ADDRESS = "1NzESHfiazCbxwhTCg2jiTWcZgpSMKDKhy";
+    public static final String EXAMPLE_RECEIVING_ADDRESS = "AGmjisMzSimpNYx3zHFzLGkWXBh3XgJvVH";
     public static final String EXAMPLE_RECEIVING_ADDRESS_LABEL = "myReceivingAddress label, text after comma\n text after return";
 
-    public static final String EXAMPLE_SENDING_ADDRESS = "1K9A6xh9wGZD1xNLBdxUSFNxtRFUsw5Z4n";
+    public static final String EXAMPLE_SENDING_ADDRESS = "ANU2scjmty3YBibZrKt4JJCsrpvGzx6q52";
     public static final String EXAMPLE_SENDING_ADDRESS_LABEL = "mySendingAddress label, text after comma\n text after return";
 
     private String PROPERTY_NAME1 = "aProperty";
     private String PROPERTY_VALUE1 = "aValue";
-       
+
     private String PROPERTY_NAME2 = "anotherProperty";
     private String PROPERTY_VALUE2 = "anotherValue";
-       
+
     @Test
     public void testRoundTrip() throws Exception {
         // Create MultiBit controller.
@@ -75,7 +75,7 @@ public class WalletInfoTest extends TestCase {
 
         walletInfo.put(PROPERTY_NAME1, PROPERTY_VALUE1);
         walletInfo.put(PROPERTY_NAME2, PROPERTY_VALUE2);
-        
+
         // write to file
         walletInfo.writeToFile(WalletInfoData.createWalletInfoFilename(walletName), MultiBitWalletVersion.SERIALIZED);
 
@@ -92,18 +92,19 @@ public class WalletInfoTest extends TestCase {
 
         // check sending address
         ArrayList<WalletAddressBookData> sendAddresses = rebornWalletInfo.getSendingAddresses();
+        System.out.println(sendAddresses);
         assertEquals(1, sendAddresses.size());
         WalletAddressBookData sendAddress = sendAddresses.get(0);
         assertEquals(EXAMPLE_SENDING_ADDRESS_LABEL, sendAddress.getLabel());
         assertEquals(EXAMPLE_SENDING_ADDRESS, sendAddress.getAddress());
- 
+
         // check receiving address
         ArrayList<WalletAddressBookData> receiveAddresses = rebornWalletInfo.getReceivingAddresses();
         assertEquals(1, receiveAddresses.size());
         WalletAddressBookData receiveAddress = receiveAddresses.get(0);
         assertEquals(EXAMPLE_RECEIVING_ADDRESS_LABEL, receiveAddress.getLabel());
         assertEquals(EXAMPLE_RECEIVING_ADDRESS, receiveAddress.getAddress());
-        
+
         // Check properties.
         assertEquals(PROPERTY_VALUE1, rebornWalletInfo.getProperty(PROPERTY_NAME1));
         assertEquals(PROPERTY_VALUE2, rebornWalletInfo.getProperty(PROPERTY_NAME2));
@@ -114,7 +115,7 @@ public class WalletInfoTest extends TestCase {
         // Create MultiBit controller.
         final CreateControllers.Controllers controllers = CreateControllers.createControllers();
         final BitcoinController controller = controllers.bitcoinController;
-        
+
         // Get test directory and wallet.
         File directory = new File(".");
         String currentPath = directory.getAbsolutePath();
@@ -126,15 +127,15 @@ public class WalletInfoTest extends TestCase {
         WalletInfoData walletInfo = new WalletInfoData(walletName, null, MultiBitWalletVersion.PROTOBUF);
         assertNotNull(walletInfo);
     }
-    
+
     @Test
     public void testURLEncodeDecode() {
         String initialText = "abcdefghijklmnopqrstuvwxyz%201234567890 !@#$%^&*()_+-= []{};':|`~,./<>?";
         String encodedText = WalletInfoData.encodeURLString(initialText);
         String decodedText = WalletInfoData.decodeURLString(encodedText);
-        
+
         assertEquals(initialText, decodedText);
-        
+
         decodedText = WalletInfoData.decodeURLString("%20abcdef");
         assertEquals(" abcdef", decodedText);
 

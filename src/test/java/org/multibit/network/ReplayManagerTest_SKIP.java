@@ -47,8 +47,8 @@ import com.google.bitcoin.core.NetworkParameters;
 import com.google.bitcoin.core.Wallet;
 import com.google.bitcoin.core.Wallet.BalanceType;
 
-public class ReplayManagerTest extends TestCase {
-    private static final Logger log = LoggerFactory.getLogger(ReplayManagerTest.class);
+public class ReplayManagerTest_SKIP extends TestCase {
+    private static final Logger log = LoggerFactory.getLogger(ReplayManagerTest_SKIP.class);
 
     private BitcoinController controller;
     private Localiser localiser;
@@ -76,7 +76,7 @@ public class ReplayManagerTest extends TestCase {
         final CreateControllers.Controllers controllers = CreateControllers.createControllers(applicationDataDirectoryLocator);
         controller = controllers.bitcoinController;
 
-        log.debug("Creating Bitcoin service");
+        log.debug("Creating AICoin service");
         // Create the MultiBitService that connects to the bitcoin network.
         MultiBitService multiBitService = new MultiBitService(controller);
         controller.setMultiBitService(multiBitService);
@@ -181,7 +181,7 @@ public class ReplayManagerTest extends TestCase {
 
     /**
      * Create a working, portable runtime of MultiBit in a temporary directory.
-     * 
+     *
      * @return the temporary directory the multibit runtime has been created in
      */
     private File createMultiBitRuntime() throws IOException {

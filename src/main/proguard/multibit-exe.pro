@@ -9,20 +9,20 @@
 -injars  ../../../target/multibit-exe-full.jar
 -outjars ../../../target/multibit-exe.jar
 
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/rt.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/alt-rt.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/charsets.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/jce.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/jfr.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/JObjC.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/jsse.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/management-agent.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/dnsns.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/localedata.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/sunec.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar
--libraryjars ../skeleton/mac/MultiBit.app/Contents/Plugins/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/zipfs.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/rt.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/alt-rt.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/charsets.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/jce.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/jfr.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/JObjC.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/jsse.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/management-agent.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/dnsns.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/localedata.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/sunec.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar
+-libraryjars ../skeleton/mac/MultiBit.app/Contents/PlugIns/jdk1.7.0_25.jdk/Contents/Home/jre/lib/ext/zipfs.jar
 
 # Save the obfuscation mapping to a file, so you can de-obfuscate any stack
 # traces later on. Keep a fixed source file attribute and all line number
@@ -68,7 +68,7 @@
 # Explicitly preserve all serialization members. The Serializable interface
 # is only a marker interface, so it wouldn't save them.
 # You can comment this out if your application doesn't use serialization.
-# If your code contains serializable classes that have to be backward 
+# If your code contains serializable classes that have to be backward
 # compatible, please refer to the manual.
 
 -keepclassmembers class * implements java.io.Serializable {
@@ -80,7 +80,7 @@
     java.lang.Object readResolve();
 }
 
-# Your application may contain more items that need to be preserved; 
+# Your application may contain more items that need to be preserved;
 # typically classes that are dynamically created using Class.forName:
 -keep public class com.xeiam.xchange.**
 {

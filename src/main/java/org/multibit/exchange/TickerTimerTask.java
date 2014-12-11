@@ -148,12 +148,12 @@ public class TickerTimerTask extends TimerTask {
                                     break;
                                 }
                             } else {
-                                if ("BTC".equals(loopSymbolPair.baseCurrency) && loopSymbolPair.counterCurrency.equals(currency)) {
+                                if ("XAI".equals(loopSymbolPair.baseCurrency) && loopSymbolPair.counterCurrency.equals(currency)) {
                                     getItFromTheServer = true;
                                     currencyPairToUse = loopSymbolPair;
                                     break;
                                 }
-                                if ("BTC".equals(loopSymbolPair.counterCurrency) && loopSymbolPair.baseCurrency.equals(currency)) {
+                                if ("XAI".equals(loopSymbolPair.counterCurrency) && loopSymbolPair.baseCurrency.equals(currency)) {
                                     getItFromTheServer = true;
                                     invertedRates = true;
                                     currencyPairToUse = loopSymbolPair;
@@ -299,23 +299,23 @@ public class TickerTimerTask extends TimerTask {
                     String counterCurrency = exchangeSymbols.get(i).counterCurrency;
 
                     if (ExchangeData.OPEN_EXCHANGE_RATES_EXCHANGE_NAME.equals(newExchangeName)) {
-                        if ("USD".equalsIgnoreCase(baseCurrency) && !"BTC".equalsIgnoreCase(counterCurrency)) {
+                        if ("USD".equalsIgnoreCase(baseCurrency) && !"XAI".equalsIgnoreCase(counterCurrency)) {
                             if (!"EEK".equalsIgnoreCase(counterCurrency) && !"CLF".equalsIgnoreCase(counterCurrency) 
                              && !"JEP".equalsIgnoreCase(counterCurrency) && ! "SVC".equalsIgnoreCase(counterCurrency)) {
                                 availableCurrencies.add(counterCurrency);
                             }
                         }
-                        if ("USD".equalsIgnoreCase(counterCurrency) && !"BTC".equalsIgnoreCase(baseCurrency)) {
+                        if ("USD".equalsIgnoreCase(counterCurrency) && !"XAI".equalsIgnoreCase(baseCurrency)) {
                             if (!"EEK".equalsIgnoreCase(baseCurrency) && !"CLF".equalsIgnoreCase(baseCurrency) 
                                     && !"JEP".equalsIgnoreCase(baseCurrency) && ! "SVC".equalsIgnoreCase(baseCurrency)) {
                                 availableCurrencies.add(baseCurrency);
                             }
                         }
                     } else {
-                        if ("BTC".equalsIgnoreCase(baseCurrency)) {
+                        if ("XAI".equalsIgnoreCase(baseCurrency)) {
                             availableCurrencies.add(counterCurrency);
                         }
-                        if ("BTC".equalsIgnoreCase(counterCurrency)) {
+                        if ("XAI".equalsIgnoreCase(counterCurrency)) {
                             availableCurrencies.add(baseCurrency);
                         }
                     }

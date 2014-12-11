@@ -95,7 +95,7 @@ public enum CurrencyConverter {
        this.controller = controller;
        
        try {
-           BITCOIN_CURRENCY_UNIT  = CurrencyUnit.of("BTC");
+           BITCOIN_CURRENCY_UNIT  = CurrencyUnit.of("XAI");
            
            if (currencyCode != null && !"".equals(currencyCode)) {
                currencyUnit = CurrencyUnit.of(currencyCode);
@@ -160,7 +160,7 @@ public enum CurrencyConverter {
         currencyCodeToDescriptionMap.put("BOB", "Bolivian Boliviano");
         currencyCodeToDescriptionMap.put("BRL", "Brazilian Real");
         currencyCodeToDescriptionMap.put("BSD", "Bahamian Dollar");
-        currencyCodeToDescriptionMap.put("BTC", "Bitcoin");
+        currencyCodeToDescriptionMap.put("XAI", "Bitcoin");
         currencyCodeToDescriptionMap.put("BTN", "Bhutanese Ngultrum");
         currencyCodeToDescriptionMap.put("BWP", "Botswanan Pula");
         currencyCodeToDescriptionMap.put("BYR", "Belarusian Ruble");

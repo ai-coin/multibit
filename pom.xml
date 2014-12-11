@@ -188,7 +188,6 @@
             </plugin>
 
             <!-- Proguard the executable jar file to remove unnecessary classes -->
-            <!--
             <plugin>
                 <groupId>com.github.wvengen</groupId>
                 <artifactId>proguard-maven-plugin</artifactId>
@@ -217,7 +216,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            -->
 
             <!-- Produce staging directory with all resources used in creation of
         				the linux IzPack installer and in creation of the Mac application bundle -->
@@ -761,7 +759,7 @@
         <dependency>
             <groupId>org.joda</groupId>
             <artifactId>joda-money</artifactId>
-            <version>0.8</version>
+            <version>0.10.0</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -782,7 +780,7 @@
             <groupId>com.oracle</groupId>
             <artifactId>javafx</artifactId>
             <version>2.2.40</version>
-            <systemPath>${java.home}/lib/ext/jfxrt.jar</systemPath>
+            <systemPath>${basedir}/jfxrt.jar</systemPath>
             <scope>system</scope>
         </dependency>
     </dependencies>

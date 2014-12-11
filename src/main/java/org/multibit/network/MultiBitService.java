@@ -20,6 +20,7 @@ import com.google.bitcoin.core.Wallet.SendRequest;
 import com.google.bitcoin.crypto.KeyCrypterException;
 import com.google.bitcoin.net.discovery.DnsDiscovery;
 import com.google.bitcoin.net.discovery.IrcDiscovery;
+import com.google.bitcoin.params.MainNetParams;
 import com.google.bitcoin.store.BlockStore;
 import com.google.bitcoin.store.BlockStoreException;
 import com.google.bitcoin.store.SPVBlockStore;
@@ -48,8 +49,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.net.InetSocketAddress;
 import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -303,6 +303,22 @@ public class MultiBitService {
     return blockStore;
   }
 
+  private InetSocketAddress getInetSocketAddress(final String addressString) {
+    int index = addressString.indexOf(':');
+    if (index > -1) {
+      final String host = addressString.substring(0, index).trim();
+      final String portString = addressString.substring(index + 1);
+      System.out.println("host=" + host);
+      System.out.println("port=" + portString);
+      final int port = Integer.parseInt(portString);
+      return new InetSocketAddress(host, port);
+    } else {
+      return new InetSocketAddress(addressString, MainNetParams.get().getPort());
+    }
+  }
+
+
+
   public void createNewPeerGroup() {
     peerGroup = new MultiBitPeerGroup(bitcoinController, networkParameters, blockChain);
     peerGroup.setFastCatchupTimeSecs(0); // genesis block
@@ -312,13 +328,9 @@ public class MultiBitService {
     String singleNodeConnection = controller.getModel().getUserPreference(BitcoinModel.SINGLE_NODE_CONNECTION);
     String peers = controller.getModel().getUserPreference(BitcoinModel.PEERS);
     if (singleNodeConnection != null && !singleNodeConnection.equals("")) {
-      try {
-        peerGroup.addAddress(new PeerAddress(InetAddress.getByName(singleNodeConnection.trim())));
-        peerGroup.setMaxConnections(1);
-        peersSpecified = true;
-      } catch (UnknownHostException e) {
-        log.error(e.getMessage(), e);
-      }
+      peerGroup.addAddress(new PeerAddress(getInetSocketAddress(singleNodeConnection.trim())));
+      peerGroup.setMaxConnections(1);
+      peersSpecified = true;
     } else if (peers != null && !peers.equals("")) {
       // Split using commas.
       String[] peerList = peers.split(",");
@@ -326,12 +338,8 @@ public class MultiBitService {
         int numberOfPeersAdded = 0;
 
         for (int i = 0; i < peerList.length; i++) {
-          try {
-            peerGroup.addAddress(new PeerAddress(InetAddress.getByName(peerList[i].trim())));
-            numberOfPeersAdded++;
-          } catch (UnknownHostException e) {
-            log.error(e.getMessage(), e);
-          }
+          peerGroup.addAddress(new PeerAddress(getInetSocketAddress(peerList[i].trim())));
+          numberOfPeersAdded++;
         }
         peerGroup.setMaxConnections(numberOfPeersAdded);
         peersSpecified = true;

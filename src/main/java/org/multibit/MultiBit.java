@@ -15,6 +15,7 @@
  */
 package org.multibit;
 
+import com.google.bitcoin.core.Peer;
 import com.google.bitcoin.core.StoredBlock;
 import com.google.bitcoin.core.Wallet;
 import org.multibit.controller.Controller;
@@ -535,6 +536,9 @@ public final class MultiBit {
                     ((MultiBitFrame) swingViewSystem).setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 }
             }
+
+            // ensure quickly connecting peers have reference to the wallets
+            MultiBitPeerGroup.getInstance().ensurePeersHaveWallets();
 
             log.debug("Checking for Bitcoin URI on command line");
             // Check for a valid entry on the command line (protocol handler).

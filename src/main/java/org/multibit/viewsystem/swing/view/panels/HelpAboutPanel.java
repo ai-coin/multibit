@@ -40,13 +40,13 @@ public class HelpAboutPanel extends JPanel implements Viewable {
     private static final long serialVersionUID = 191352212345057705L;
 
     private static final String MULTIBIT_URL = "https://multibit.org";
-    
+
     private Controller controller;
 
   /**
      * Creates a new {@link HelpAboutPanel}.
      */
-    public HelpAboutPanel(Controller controller, MultiBitFrame mainFrame) {        
+    public HelpAboutPanel(Controller controller, MultiBitFrame mainFrame) {
         setBackground(ColorAndFontConstants.VERY_LIGHT_BACKGROUND_COLOR);
         this.controller = controller;
 
@@ -57,7 +57,7 @@ public class HelpAboutPanel extends JPanel implements Viewable {
 
         GridBagConstraints constraints = new GridBagConstraints();
         setLayout(new GridBagLayout());
-        
+
         constraints.fill = GridBagConstraints.NONE;
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -99,7 +99,7 @@ public class HelpAboutPanel extends JPanel implements Viewable {
         constraints.weightx = 1;
         constraints.weighty = 0.1;
         constraints.anchor = GridBagConstraints.CENTER;
-        MultiBitLabel versionLabel = new MultiBitLabel(versionText);
+        MultiBitLabel versionLabel = new MultiBitLabel(versionText + " - A.I. Coin");
         add(versionLabel, constraints);
 
         constraints.fill = GridBagConstraints.NONE;
@@ -121,9 +121,9 @@ public class HelpAboutPanel extends JPanel implements Viewable {
     }
 
     @Override
-    public void displayView(DisplayHint displayHint) {        
+    public void displayView(DisplayHint displayHint) {
     }
-       
+
     @Override
     public Icon getViewIcon() {
         return ImageLoader.createImageIcon(ImageLoader.MULTIBIT_SMALL_ICON_FILE);
@@ -133,7 +133,7 @@ public class HelpAboutPanel extends JPanel implements Viewable {
     public String getViewTitle() {
         return controller.getLocaliser().getString("helpAboutAction.tooltip");
     }
-    
+
     @Override
     public String getViewTooltip() {
         return controller.getLocaliser().getString("helpAboutAction.tooltip");

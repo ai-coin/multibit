@@ -20,17 +20,21 @@ import org.multibit.controller.bitcoin.BitcoinController;
 
 import com.google.bitcoin.core.BlockChain;
 import com.google.bitcoin.core.NetworkParameters;
+import com.google.bitcoin.core.Peer;
 import com.google.bitcoin.core.PeerGroup;
 
 
 public class MultiBitPeerGroup extends PeerGroup {
+
     private final Controller controller;
     private final BitcoinController bitcoinController;
     MultiBitDownloadListener multiBitDownloadListener = null;
+    // the MultiBit singleton peer group instance
+    private static MultiBitPeerGroup instance;
 
     public static final int MAXIMUM_NUMBER_OF_PEERS = 6;
 
-        
+
     public MultiBitPeerGroup(BitcoinController bitcoinController, NetworkParameters params, BlockChain chain) {
         super(params, chain);
         this.bitcoinController = bitcoinController;
@@ -38,11 +42,13 @@ public class MultiBitPeerGroup extends PeerGroup {
         multiBitDownloadListener = new MultiBitDownloadListener(this.bitcoinController);
 
         setMaxConnections(MAXIMUM_NUMBER_OF_PEERS);
+        assert instance == null;
+        instance = this;
     }
-    
+
     /**
      * Download the blockchain from peers.
-     * 
+     *
      * <p>This method wait until the download is complete.  "Complete" is defined as downloading
      * from at least one peer all the blocks that are in that peer's inventory.
      */
@@ -54,4 +60,12 @@ public class MultiBitPeerGroup extends PeerGroup {
     public MultiBitDownloadListener getMultiBitDownloadListener() {
         return multiBitDownloadListener;
     }
+
+    /**
+     * @return the singleton instance
+     */
+    public static MultiBitPeerGroup getInstance() {
+      return instance;
+    }
+
 }

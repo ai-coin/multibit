@@ -44,7 +44,7 @@ import java.util.List;
 public class ExitAction extends AbstractExitAction {
 
     private static final long serialVersionUID = 8784284740245520863L;
-    
+
     private static final int MAXIMUM_TIME_TO_WAIT_FOR_HEALTH_CHECK_TASK = 10000; // ms
     private static final int TIME_TO_WAIT = 200; // ms
 
@@ -79,8 +79,8 @@ public class ExitAction extends AbstractExitAction {
         String shuttingDownTitle = bitcoinController.getLocaliser().getString("multiBitFrame.title.shuttingDown");
 
         if (mainFrame != null) {
-            mainFrame.setTitle(shuttingDownTitle);
-               
+            mainFrame.setTitle("A.I. Coin - " + shuttingDownTitle);
+
             if (EventQueue.isDispatchThread()) {
                 mainFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             } else {
@@ -91,13 +91,13 @@ public class ExitAction extends AbstractExitAction {
                     }
                 });
             }
-               
+
             // If the HealthCheckTimerTask is running wait until it completes.
             HealthCheckTimerTask healthCheckTimerTask = mainFrame.getHealthCheckTimerTask();
             if (healthCheckTimerTask != null) {
                 boolean breakout = false;
                 int timeWaited = 0;
-                
+
                 while(healthCheckTimerTask.isRunning() && !breakout && timeWaited < MAXIMUM_TIME_TO_WAIT_FOR_HEALTH_CHECK_TASK) {
                     try {
                         log.debug("Waiting for healthCheckTimerTask to complete (waited so far = " + timeWaited + "). . .");
@@ -110,7 +110,7 @@ public class ExitAction extends AbstractExitAction {
                 }
             }
         }
-        
+
         if (bitcoinController != null && bitcoinController.getMultiBitService() != null) {
             // Stop the peer group so that blocks are notified to wallets correctly.
             if (bitcoinController.getMultiBitService().getPeerGroup() != null) {
@@ -148,13 +148,13 @@ public class ExitAction extends AbstractExitAction {
                                         new String[] { loopPerWalletModelData.getWalletDescription() });
                             }
                             if (EventQueue.isDispatchThread()) {
-                                mainFrame.setTitle(titleText);
+                                mainFrame.setTitle("A.I. Coin - " + titleText);
                             } else {
                                 final String finalTitleText = titleText;
                                 SwingUtilities.invokeLater(new Runnable() {
                                     @Override
                                     public void run() {
-                                        mainFrame.setTitle(finalTitleText);
+                                        mainFrame.setTitle("A.I. Coin - " + finalTitleText);
                                     }
                                 });
                             }

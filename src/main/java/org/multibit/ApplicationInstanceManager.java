@@ -37,7 +37,7 @@ public final class ApplicationInstanceManager {
      * MultiBit port number, as specified in
      * http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
      */
-    public static final int MULTIBIT_NETWORK_SOCKET = 8331;
+    public static final int MULTIBIT_NETWORK_SOCKET = 7331;
 
     /**
      * Multibit message start - must end with newline

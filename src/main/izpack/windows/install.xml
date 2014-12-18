@@ -91,8 +91,8 @@
       We specify here our packs.
   -->
   <packs>
-    <pack name="MultiBit" required="yes">
-      <description>MultiBit install files.</description>
+    <pack name="MultiBit_AICoin" required="yes">
+      <description>MultiBit_AICoin install files.</description>
       <file src="readme.txt" targetdir="$INSTALL_PATH"/>
       <file src="configuration.md" targetdir="$INSTALL_PATH"/>
       <file src="multibit.ico" targetdir="$INSTALL_PATH"/>

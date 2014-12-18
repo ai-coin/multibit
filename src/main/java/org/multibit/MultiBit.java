@@ -91,7 +91,7 @@ public final class MultiBit {
      */
     @SuppressWarnings("deprecation")
     public static void main(String args[]) {
-        log.info("Starting MultiBit at " + (new Date()).toGMTString());
+        log.info("Starting MultiBit_AICoin at " + (new Date()).toGMTString());
         // Print out all the system properties.
         for (Map.Entry<?,?> e : System.getProperties().entrySet()) {
             log.debug(String.format("%s = %s", e.getKey(), e.getValue()));

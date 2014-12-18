@@ -1,23 +1,25 @@
-<shortcuts> 
-   <programGroup defaultName="MultiBit" location="applications"/> 
-   <shortcut name="MultiBit ${project.version}" 
-             target="$INSTALL_PATH/multibit.exe" 
-             description="MultiBit" 
+<shortcuts>
+   <programGroup defaultName="MultiBit_AICoin" location="applications"/>
+   <shortcut name="MultiBit_AICoin ${project.version}"
+             target="$INSTALL_PATH/multibit.exe"
+             description="MultiBit_AICoin"
              workingDirectory="$INSTALL_PATH"
-             iconFile="$INSTALL_PATH/multibit.ico" 
-             initialState="normal" 
+             iconFile="$INSTALL_PATH/multibit.ico"
+             initialState="normal"
              programGroup="yes"
-             desktop="yes" 
-             applications="no" 
-             startMenu="no" 
+             desktop="yes"
+             applications="no"
+             startMenu="no"
              startup="no">
-    </shortcut>    <shortcut name="Uninstall MultiBit ${project.version}" 
-             target="$INSTALL_PATH/uninstaller/uninstaller.jar" 
-             description="Uninstall MultiBit" 
-             initialState="normal" 
+    </shortcut>
+    <shortcut name="Uninstall MultiBit_AICoin ${project.version}"
+             target="$INSTALL_PATH/uninstaller/uninstaller.jar"
+             description="Uninstall MultiBit_AICoin"
+             initialState="normal"
              programGroup="yes"
-             desktop="no" 
-             applications="no" 
-             startMenu="no" 
+             desktop="no"
+             applications="no"
+             startMenu="no"
              startup="no">
-    </shortcut></shortcuts>
+    </shortcut>
+</shortcuts>

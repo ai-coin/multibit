@@ -520,15 +520,16 @@ public class SendBitcoinConfirmPanel extends JPanel implements WalletBusyListene
             boolean singlePeerOverride = peers != null && peers.split(",").length == 1;
 
             if (thisPanel.sendBitcoinNowAction != null) {
-                if (!singleNodeConnectionOverride && !singlePeerOverride && this.bitcoinController.getModel().getNumberOfConnectedPeers() < BitcoinModel.MINIMUM_NUMBER_OF_CONNECTED_PEERS_BEFORE_SEND_IS_ENABLED) {
-                     // Disable send button
-                    enableSend = false;
-                    message = controller.getLocaliser().getString("sendBitcoinConfirmView.multibitMustBeOnline");
-                } else {
+// A.I. Coin permits immediate sends
+//                if (!singleNodeConnectionOverride && !singlePeerOverride && this.bitcoinController.getModel().getNumberOfConnectedPeers() < BitcoinModel.MINIMUM_NUMBER_OF_CONNECTED_PEERS_BEFORE_SEND_IS_ENABLED) {
+//                     // Disable send button
+//                    enableSend = false;
+//                    message = controller.getLocaliser().getString("sendBitcoinConfirmView.multibitMustBeOnline");
+//                } else {
                     // Enable send button
                     enableSend = true;
                     message = " ";
-                }
+//                }
                 if (this.bitcoinController.getModel().getActivePerWalletModelData().isBusy()) {
                     enableSend = false;
                     message = controller.getLocaliser().getString("multiBitSubmitAction.walletIsBusy",
@@ -606,21 +607,22 @@ public class SendBitcoinConfirmPanel extends JPanel implements WalletBusyListene
 
                         String peers = bitcoinController.getModel().getUserPreference(BitcoinModel.PEERS);
                         boolean singlePeerOverride = peers != null && peers.split(",").length == 1;
-
-                        boolean enableSend = false;
-                        if (thisPanel.sendBitcoinNowAction != null) {
-                            if (!singleNodeConnectionOverride && !singlePeerOverride && bitcoinController.getModel().getNumberOfConnectedPeers() < BitcoinModel.MINIMUM_NUMBER_OF_CONNECTED_PEERS_BEFORE_SEND_IS_ENABLED) {
-                                // Disable send button
-                                enableSend = false;
-                            } else {
-                                // Enable send button
-                                enableSend = true;
-                            }
-                            if (bitcoinController.getModel().getActivePerWalletModelData().isBusy()) {
-                                enableSend = false;
-                            }
-                            thisPanel.sendBitcoinNowAction.setEnabled(enableSend);
-                        }
+                        singlePeerOverride = true; // AICoin Demo
+                        boolean enableSend = true;
+//                        if (thisPanel.sendBitcoinNowAction != null) {
+//                            if (!singleNodeConnectionOverride && !singlePeerOverride && bitcoinController.getModel().getNumberOfConnectedPeers() < BitcoinModel.MINIMUM_NUMBER_OF_CONNECTED_PEERS_BEFORE_SEND_IS_ENABLED) {
+//                                // Disable send button
+//                                enableSend = false;
+//                            } else {
+//                                // Enable send button
+//                                enableSend = true;
+//                            }
+//                            if (bitcoinController.getModel().getActivePerWalletModelData().isBusy()) {
+//                                enableSend = false;
+//                            }
+//                            thisPanel.sendBitcoinNowAction.setEnabled(enableSend);
+//                        }
+                        thisPanel.sendBitcoinNowAction.setEnabled(true);
 
                         MultiBitLabel confirmText1 = thisPanel.confirmText1;
                         if (enableSend) {

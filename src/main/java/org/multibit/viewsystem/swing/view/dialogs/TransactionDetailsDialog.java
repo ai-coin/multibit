@@ -52,9 +52,7 @@ import java.util.List;
  */
 public class TransactionDetailsDialog extends MultiBitDialog {
 
-    private static final String BLOCKCHAIN_INFO_PREFIX = "http://blockchain.info/tx-index/";
-
-    private static final String BLOCKEXPLORER_TRANSACTION_PREFIX = "http://blockexplorer.com/tx/";
+    private static final String BLOCKCHAIN_EXPLORER_PREFIX = "http://aicoin.dyndns.org:3000/tx/";
 
     private static final long serialVersionUID = 191435612345057705L;
 
@@ -66,7 +64,7 @@ public class TransactionDetailsDialog extends MultiBitDialog {
 
     private final Controller controller;
     private final BitcoinController bitcoinController;
-    
+
     private WalletTableData rowTableData;
 
     private MultiBitLabel confidenceText;
@@ -88,7 +86,7 @@ public class TransactionDetailsDialog extends MultiBitDialog {
     private JScrollPane detailScrollPane;
 
     private SimpleDateFormat dateFormatter;
-    
+
     private boolean initialisedOk = false;
 
     /**
@@ -96,10 +94,10 @@ public class TransactionDetailsDialog extends MultiBitDialog {
      */
     public TransactionDetailsDialog(BitcoinController bitcoinController, MultiBitFrame mainFrame, WalletTableData rowTableData) {
         super(mainFrame, bitcoinController.getLocaliser().getString("transactionDetailsDialog.title"));
-        
+
         this.bitcoinController = bitcoinController;
         this.controller = this.bitcoinController;
-        
+
         this.rowTableData = rowTableData;
 
         try {
@@ -140,7 +138,7 @@ public class TransactionDetailsDialog extends MultiBitDialog {
                     "privateKeysHandler.thereWasAnException", new String[] { errorMessage })));
         }
     }
-    
+
     /**
      * Initialise transaction details dialog.
      */
@@ -401,7 +399,7 @@ public class TransactionDetailsDialog extends MultiBitDialog {
         constraints.gridwidth = 1;
         constraints.anchor = GridBagConstraints.LINE_START;
         detailPanel.add(filler2, constraints);
-  
+
         MultiBitLabel sizeLabel = new MultiBitLabel("");
         feeLabel.setText(controller.getLocaliser().getString("showPreferencesPanel.feeLabel.text"));
         feeLabel.setToolTipText(controller.getLocaliser().getString("transactionDetailsDialog.feeLabel.tooltip"));
@@ -425,7 +423,7 @@ public class TransactionDetailsDialog extends MultiBitDialog {
         constraints.gridwidth = 3;
         constraints.anchor = GridBagConstraints.LINE_START;
         detailPanel.add(sizeText, constraints);
-        
+
         ByteArrayOutputStream byteOutputStream = new ByteArrayOutputStream();
         try {
             rowTableData.getTransaction().bitcoinSerialize(byteOutputStream);
@@ -436,20 +434,18 @@ public class TransactionDetailsDialog extends MultiBitDialog {
 
 
         if (isBrowserSupported()) {
-            MultiBitButton openInBlockExplorerButton = new MultiBitButton(controller.getLocaliser().getString("transactionDetailsDialog.viewAtBlockExplorer"));
-            openInBlockExplorerButton.addActionListener(new ActionListener() {
-
+            MultiBitButton openInBlockChainInfoButton = new MultiBitButton(controller.getLocaliser().getString("transactionDetailsDialog.viewAtBlockChainInfo"));
+            openInBlockChainInfoButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     try {
-                        String blockExplorerTransactionURL = BLOCKEXPLORER_TRANSACTION_PREFIX + rowTableData.getTransaction().getHashAsString();
-                        openURI(new URI(blockExplorerTransactionURL));
+                        String blockChainInfoTransactionInfo = BLOCKCHAIN_EXPLORER_PREFIX + rowTableData.getTransaction().getHashAsString();
+                        openURI(new URI(blockChainInfoTransactionInfo));
                     } catch (URISyntaxException e) {
                         log.debug(e.getMessage());
                     }
-                    
                 }});
-            
+
             constraints.fill = GridBagConstraints.NONE;
             constraints.gridx = 2;
             constraints.gridy = 8;
@@ -458,29 +454,8 @@ public class TransactionDetailsDialog extends MultiBitDialog {
             constraints.gridwidth = 1;
             constraints.gridheight = 1;
             constraints.anchor = GridBagConstraints.LINE_END;
-            detailPanel.add(openInBlockExplorerButton, constraints);
-
-            MultiBitButton openInBlockChainInfoButton = new MultiBitButton(controller.getLocaliser().getString("transactionDetailsDialog.viewAtBlockChainInfo"));
-            openInBlockChainInfoButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    try {
-                        String blockChainInfoTransactionInfo = BLOCKCHAIN_INFO_PREFIX + rowTableData.getTransaction().getHashAsString();
-                        openURI(new URI(blockChainInfoTransactionInfo));
-                    } catch (URISyntaxException e) {
-                        log.debug(e.getMessage());
-                    } 
-                }});
-            
-            constraints.fill = GridBagConstraints.NONE;
-            constraints.gridx = 3;
-            constraints.gridy = 8;
-            constraints.weightx = 0.4;
-            constraints.weighty = 0.1;
-            constraints.gridwidth = 1;
-            constraints.gridheight = 1;
-            constraints.anchor = GridBagConstraints.LINE_END;
             detailPanel.add(openInBlockChainInfoButton, constraints);
+
         }
 
         OkBackToParentAction okAction = new OkBackToParentAction(controller, this);
@@ -491,7 +466,7 @@ public class TransactionDetailsDialog extends MultiBitDialog {
                     okButton.doClick();
             }
         });
-   
+
         constraints.fill = GridBagConstraints.NONE;
         constraints.gridx = 4;
         constraints.gridy = 8;
@@ -507,9 +482,9 @@ public class TransactionDetailsDialog extends MultiBitDialog {
         if (transaction.getLockTime() > 0) {
             // Non standard transaction.
             String transactionTrustfulness = MultiBit.getController().getLocaliser().getString("multiBitFrame.status.notConfirmedAndNotStandard") + ". ";
-            return transactionTrustfulness + transactionConfidenceToStringLocalised(transaction.getConfidence()); 
+            return transactionTrustfulness + transactionConfidenceToStringLocalised(transaction.getConfidence());
         } else {
-            return transactionConfidenceToStringLocalised(transaction.getConfidence());   
+            return transactionConfidenceToStringLocalised(transaction.getConfidence());
         }
     }
 
@@ -633,7 +608,7 @@ public class TransactionDetailsDialog extends MultiBitDialog {
     public boolean isInitialisedOk() {
         return initialisedOk;
     }
-    
+
     private String transactionConfidenceToStringLocalised(TransactionConfidence transactionConfidence) {
         StringBuilder builder = new StringBuilder();
 

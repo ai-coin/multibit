@@ -647,41 +647,11 @@ public class ShowTransactionsPanel extends JPanel implements Viewable, CurrencyC
             case 0: {
                 return getConfidenceIcon(confidence);
             }
-            case 1: {
-                if (isLeftToRight) {
-                    return progress1Icon;
-                } else {
-                    return rtlProgress1Icon;
-                }
-            }
-            case 2: {
-                if (isLeftToRight) {
-                    return progress2Icon;
-                } else {
-                    return rtlProgress2Icon;
-                }
-            }
-            case 3: {
-                if (isLeftToRight) {
-                    return progress3Icon;
-                } else {
-                    return rtlProgress3Icon;
-                }
-            }
-            case 4: {
-                if (isLeftToRight) {
-                    return progress4Icon;
-                } else {
-                    return rtlProgress4Icon;
-                }
-            }
-            case 5: {
-                if (isLeftToRight) {
-                    return progress5Icon;
-                } else {
-                    return rtlProgress5Icon;
-                }
-            }
+            case 1:
+            case 2:
+            case 3:
+            case 4: 
+            case 5:
             case 6: {
                 return tickIcon;
             }

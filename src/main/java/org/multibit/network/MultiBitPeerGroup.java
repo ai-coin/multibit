@@ -42,8 +42,10 @@ public class MultiBitPeerGroup extends PeerGroup {
         multiBitDownloadListener = new MultiBitDownloadListener(this.bitcoinController);
 
         setMaxConnections(MAXIMUM_NUMBER_OF_PEERS);
+        setMinBroadcastConnections(1);
         assert instance == null;
         instance = this;
+
     }
 
     /**

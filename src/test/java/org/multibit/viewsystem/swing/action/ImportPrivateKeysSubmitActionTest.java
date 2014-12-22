@@ -37,7 +37,7 @@ public class ImportPrivateKeysSubmitActionTest extends TestCase {
 
     private static final String EXPECTED_ENTER_THE_WALLET_PASSWORD = "Enter the wallet password";
     private static final String EXPECTED_NO_IMPORT_FILE_WAS_CHOSEN = "No import file was chosen. Nothing to do.";
-    private static final String EXPECTED_PRIVATE_KEY_UNLOCK_FAILED = "The private keys unlock failed. The error was \"Could not decrypt input string\". ";
+    private static final String EXPECTED_PRIVATE_KEY_UNLOCK_FAILED = "The private keys unlock failed. The error was \"Could not decrypt input string\".";
     private static final String EXPECTED_IMPORTING_PRIVATE_KEYS = "Importing private keys...";
     private static final String EXPECTED_IMPORTED_PRIVATE_KEYS = "Importing private keys... completed successfully";
 

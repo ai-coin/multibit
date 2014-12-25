@@ -52,7 +52,7 @@ import java.util.List;
  */
 public class TransactionDetailsDialog extends MultiBitDialog {
 
-    private static final String BLOCKCHAIN_EXPLORER_PREFIX = "http://aicoin.dyndns.org:3000/tx/";
+    private static final String BLOCKCHAIN_EXPLORER_PREFIX = "http://texai.dyndns.org:3000/tx/";
 
     private static final long serialVersionUID = 191435612345057705L;
 

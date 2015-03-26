@@ -238,27 +238,27 @@ public class LocaliserTest extends TestCase {
         BigInteger negativeValue = BigInteger.valueOf(-1234567890);
 
         assertEquals("12,345.67890123", localiser.bitcoinValueToString(bigPositiveValue, false, false));
-        assertEquals("12,345.67890123 XAI", localiser.bitcoinValueToString(bigPositiveValue, true, false));
-        assertEquals("12,345.67890123 XAI", localiser.bitcoinValueToString(bigPositiveValue, true, true));
+        assertEquals("12,345.67890123 AIC", localiser.bitcoinValueToString(bigPositiveValue, true, false));
+        assertEquals("12,345.67890123 AIC", localiser.bitcoinValueToString(bigPositiveValue, true, true));
         assertEquals("12,345.67890123", localiser.bitcoinValueToString(bigPositiveValue, false, true));
 
         assertEquals("12.3456789", localiser.bitcoinValueToString(positiveValue, false, false));
-        assertEquals("12.3456789 XAI", localiser.bitcoinValueToString(positiveValue, true, false));
-        assertEquals("12.3456789 XAI", localiser.bitcoinValueToString(positiveValue, true, true));
+        assertEquals("12.3456789 AIC", localiser.bitcoinValueToString(positiveValue, true, false));
+        assertEquals("12.3456789 AIC", localiser.bitcoinValueToString(positiveValue, true, true));
         assertEquals("12.3456789", localiser.bitcoinValueToString(positiveValue, false, true));
 
         assertEquals("-12,345.67890123", localiser.bitcoinValueToString(bigNegativeValue, false, false));
-        assertEquals("-12,345.67890123 XAI", localiser.bitcoinValueToString(bigNegativeValue, true, false));
-        assertEquals("-12,345.67890123 XAI", localiser.bitcoinValueToString(bigNegativeValue, true, true));
+        assertEquals("-12,345.67890123 AIC", localiser.bitcoinValueToString(bigNegativeValue, true, false));
+        assertEquals("-12,345.67890123 AIC", localiser.bitcoinValueToString(bigNegativeValue, true, true));
         assertEquals("-12,345.67890123", localiser.bitcoinValueToString(bigNegativeValue, false, true));
 
         assertEquals("-12.3456789", localiser.bitcoinValueToString(negativeValue, false, false));
-        assertEquals("-12.3456789 XAI", localiser.bitcoinValueToString(negativeValue, true, false));
-        assertEquals("-12.3456789 XAI", localiser.bitcoinValueToString(negativeValue, true, true));
+        assertEquals("-12.3456789 AIC", localiser.bitcoinValueToString(negativeValue, true, false));
+        assertEquals("-12.3456789 AIC", localiser.bitcoinValueToString(negativeValue, true, true));
         assertEquals("-12.3456789", localiser.bitcoinValueToString(negativeValue, false, true));
 
         assertEquals("0", localiser.bitcoinValueToString(BigInteger.ZERO, false, false));
-        assertEquals("0 XAI", localiser.bitcoinValueToString(BigInteger.ZERO, true, false));
+        assertEquals("0 AIC", localiser.bitcoinValueToString(BigInteger.ZERO, true, false));
         assertEquals("", localiser.bitcoinValueToString(BigInteger.ZERO, true, true));
         assertEquals("", localiser.bitcoinValueToString(BigInteger.ZERO, false, true));
     }
@@ -273,27 +273,27 @@ public class LocaliserTest extends TestCase {
         BigInteger negativeValue = BigInteger.valueOf(-1234567890);
 
         assertEquals("12.345,67890123", localiser.bitcoinValueToString(bigPositiveValue, false, false));
-        assertEquals("12.345,67890123 XAI", localiser.bitcoinValueToString(bigPositiveValue, true, false));
-        assertEquals("12.345,67890123 XAI", localiser.bitcoinValueToString(bigPositiveValue, true, true));
+        assertEquals("12.345,67890123 AIC", localiser.bitcoinValueToString(bigPositiveValue, true, false));
+        assertEquals("12.345,67890123 AIC", localiser.bitcoinValueToString(bigPositiveValue, true, true));
         assertEquals("12.345,67890123", localiser.bitcoinValueToString(bigPositiveValue, false, true));
 
         assertEquals("12,3456789", localiser.bitcoinValueToString(positiveValue, false, false));
-        assertEquals("12,3456789 XAI", localiser.bitcoinValueToString(positiveValue, true, false));
-        assertEquals("12,3456789 XAI", localiser.bitcoinValueToString(positiveValue, true, true));
+        assertEquals("12,3456789 AIC", localiser.bitcoinValueToString(positiveValue, true, false));
+        assertEquals("12,3456789 AIC", localiser.bitcoinValueToString(positiveValue, true, true));
         assertEquals("12,3456789", localiser.bitcoinValueToString(positiveValue, false, true));
 
         assertEquals("-12.345,67890123", localiser.bitcoinValueToString(bigNegativeValue, false, false));
-        assertEquals("-12.345,67890123 XAI", localiser.bitcoinValueToString(bigNegativeValue, true, false));
-        assertEquals("-12.345,67890123 XAI", localiser.bitcoinValueToString(bigNegativeValue, true, true));
+        assertEquals("-12.345,67890123 AIC", localiser.bitcoinValueToString(bigNegativeValue, true, false));
+        assertEquals("-12.345,67890123 AIC", localiser.bitcoinValueToString(bigNegativeValue, true, true));
         assertEquals("-12.345,67890123", localiser.bitcoinValueToString(bigNegativeValue, false, true));
 
         assertEquals("-12,3456789", localiser.bitcoinValueToString(negativeValue, false, false));
-        assertEquals("-12,3456789 XAI", localiser.bitcoinValueToString(negativeValue, true, false));
-        assertEquals("-12,3456789 XAI", localiser.bitcoinValueToString(negativeValue, true, true));
+        assertEquals("-12,3456789 AIC", localiser.bitcoinValueToString(negativeValue, true, false));
+        assertEquals("-12,3456789 AIC", localiser.bitcoinValueToString(negativeValue, true, true));
         assertEquals("-12,3456789", localiser.bitcoinValueToString(negativeValue, false, true));
 
         assertEquals("0", localiser.bitcoinValueToString(BigInteger.ZERO, false, false));
-        assertEquals("0 XAI", localiser.bitcoinValueToString(BigInteger.ZERO, true, false));
+        assertEquals("0 AIC", localiser.bitcoinValueToString(BigInteger.ZERO, true, false));
         assertEquals("", localiser.bitcoinValueToString(BigInteger.ZERO, true, true));
         assertEquals("", localiser.bitcoinValueToString(BigInteger.ZERO, false, true));
     }
@@ -308,27 +308,27 @@ public class LocaliserTest extends TestCase {
        BigInteger negativeValue = BigInteger.valueOf(-1234567890);
 
        assertEquals("12345.67890123", localiser.bitcoinValueToStringNotLocalised(bigPositiveValue, false, false));
-       assertEquals("12345.67890123 XAI", localiser.bitcoinValueToStringNotLocalised(bigPositiveValue, true, false));
-       assertEquals("12345.67890123 XAI", localiser.bitcoinValueToStringNotLocalised(bigPositiveValue, true, true));
+       assertEquals("12345.67890123 AIC", localiser.bitcoinValueToStringNotLocalised(bigPositiveValue, true, false));
+       assertEquals("12345.67890123 AIC", localiser.bitcoinValueToStringNotLocalised(bigPositiveValue, true, true));
        assertEquals("12345.67890123", localiser.bitcoinValueToStringNotLocalised(bigPositiveValue, false, true));
 
        assertEquals("12.3456789", localiser.bitcoinValueToStringNotLocalised(positiveValue, false, false));
-       assertEquals("12.3456789 XAI", localiser.bitcoinValueToStringNotLocalised(positiveValue, true, false));
-       assertEquals("12.3456789 XAI", localiser.bitcoinValueToStringNotLocalised(positiveValue, true, true));
+       assertEquals("12.3456789 AIC", localiser.bitcoinValueToStringNotLocalised(positiveValue, true, false));
+       assertEquals("12.3456789 AIC", localiser.bitcoinValueToStringNotLocalised(positiveValue, true, true));
        assertEquals("12.3456789", localiser.bitcoinValueToStringNotLocalised(positiveValue, false, true));
 
        assertEquals("-12345.67890123", localiser.bitcoinValueToStringNotLocalised(bigNegativeValue, false, false));
-       assertEquals("-12345.67890123 XAI", localiser.bitcoinValueToStringNotLocalised(bigNegativeValue, true, false));
-       assertEquals("-12345.67890123 XAI", localiser.bitcoinValueToStringNotLocalised(bigNegativeValue, true, true));
+       assertEquals("-12345.67890123 AIC", localiser.bitcoinValueToStringNotLocalised(bigNegativeValue, true, false));
+       assertEquals("-12345.67890123 AIC", localiser.bitcoinValueToStringNotLocalised(bigNegativeValue, true, true));
        assertEquals("-12345.67890123", localiser.bitcoinValueToStringNotLocalised(bigNegativeValue, false, true));
 
        assertEquals("-12.3456789", localiser.bitcoinValueToStringNotLocalised(negativeValue, false, false));
-       assertEquals("-12.3456789 XAI", localiser.bitcoinValueToStringNotLocalised(negativeValue, true, false));
-       assertEquals("-12.3456789 XAI", localiser.bitcoinValueToStringNotLocalised(negativeValue, true, true));
+       assertEquals("-12.3456789 AIC", localiser.bitcoinValueToStringNotLocalised(negativeValue, true, false));
+       assertEquals("-12.3456789 AIC", localiser.bitcoinValueToStringNotLocalised(negativeValue, true, true));
        assertEquals("-12.3456789", localiser.bitcoinValueToStringNotLocalised(negativeValue, false, true));
 
        assertEquals("0", localiser.bitcoinValueToStringNotLocalised(BigInteger.ZERO, false, false));
-       assertEquals("0 XAI", localiser.bitcoinValueToStringNotLocalised(BigInteger.ZERO, true, false));
+       assertEquals("0 AIC", localiser.bitcoinValueToStringNotLocalised(BigInteger.ZERO, true, false));
        assertEquals("", localiser.bitcoinValueToStringNotLocalised(BigInteger.ZERO, true, true));
        assertEquals("", localiser.bitcoinValueToStringNotLocalised(BigInteger.ZERO, false, true));
    }

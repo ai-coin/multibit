@@ -17,9 +17,12 @@ package org.multibit.model.exchange;
 
 import com.xeiam.xchange.bitstamp.BitstampExchange;
 import com.xeiam.xchange.btce.BTCEExchange;
+//import com.xeiam.xchange.btce.v3.BTCEExchange;
 import com.xeiam.xchange.campbx.CampBXExchange;
 import com.xeiam.xchange.oer.OERExchange;
 import com.xeiam.xchange.virtex.VirtExExchange;
+//import com.xeiam.xchange.virtex.v2.VirtExExchange;
+import com.xeiam.xchange.bittrex.v1.BittrexExchange;
 import org.joda.money.BigMoney;
 
 import java.util.ArrayList;
@@ -45,8 +48,9 @@ public class ExchangeData {
     public static final String OPEN_EXCHANGE_RATES_EXCHANGE_NAME = "OpenExchangeRates";
     public static final String MT_GOX_EXCHANGE_NAME = "MtGox";  // No longer presently to user
     public static final String VIRTEX_EXCHANGE_NAME = "VirtEx";
+    public static final String BITTREX_EXCHANGE_NAME = "Bittrex";
 
-    public static final String DEFAULT_EXCHANGE = BITSTAMP_EXCHANGE_NAME;
+    public static final String DEFAULT_EXCHANGE = BITTREX_EXCHANGE_NAME;
     
     public static final String DEFAULT_CURRENCY = "USD";
     
@@ -131,7 +135,8 @@ public class ExchangeData {
    * MTGOX has now been removed - any references to it get mapped to BITSTAMP
    */
     public static String[] getAvailableExchanges() {
-        return new String[] { BITSTAMP_EXCHANGE_NAME,
+        return new String[] { BITTREX_EXCHANGE_NAME,
+        	BITSTAMP_EXCHANGE_NAME,
             BTCE_EXCHANGE_NAME,
             CAMPBX_EXCHANGE_NAME,
             OPEN_EXCHANGE_RATES_EXCHANGE_NAME,
@@ -166,7 +171,10 @@ public class ExchangeData {
             return  OERExchange.class.getName();
         } else if (VIRTEX_EXCHANGE_NAME.equalsIgnoreCase(shortExchangeName)) {
             return  VirtExExchange.class.getName();
-        } else {
+        } else if (BITTREX_EXCHANGE_NAME.equalsIgnoreCase(shortExchangeName)) {
+        	return BittrexExchange.class.getName();
+        }
+        else {
             // Unidentified exchange.
             return null;
         }

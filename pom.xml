@@ -783,6 +783,11 @@
             <systemPath>${basedir}/jfxrt.jar</systemPath>
             <scope>system</scope>
         </dependency>
+        <dependency>
+        	<groupId>com.xeiam.xchange</groupId>
+        	<artifactId>xchange-bittrex</artifactId>
+        	<version>3.0.0</version>
+        </dependency>
     </dependencies>
 
     <reporting>

@@ -31,23 +31,20 @@ package org.multibit.qrcode;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import java.awt.image.BufferedImage;
-
-import org.multibit.controller.Controller;
-import org.multibit.controller.bitcoin.BitcoinController;
-import org.multibit.exchange.CurrencyConverter;
-import org.multibit.exchange.CurrencyConverterResult;
-import org.multibit.model.bitcoin.BitcoinModel;
-
 import com.google.bitcoin.core.Address;
 import com.google.bitcoin.core.AddressFormatException;
-import com.google.bitcoin.core.Utils;
 import com.google.bitcoin.uri.BitcoinURI;
 import com.google.zxing.WriterException;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.qrcode.encoder.ByteMatrix;
 import com.google.zxing.qrcode.encoder.Encoder;
 import com.google.zxing.qrcode.encoder.QRCode;
+import java.awt.image.BufferedImage;
+import org.multibit.controller.Controller;
+import org.multibit.controller.bitcoin.BitcoinController;
+import org.multibit.exchange.CurrencyConverter;
+import org.multibit.exchange.CurrencyConverterResult;
+import org.multibit.model.bitcoin.BitcoinModel;
 
 
 /**
@@ -163,7 +160,9 @@ public class QRCodeGenerator {
             throw new IllegalArgumentException("Found empty contents");
         }
 
-        Encoder.encode(contents, ErrorCorrectionLevel.L, null, code);
+        code = Encoder.encode(
+                contents, 
+                ErrorCorrectionLevel.L);
         return renderResult(code, QR_CODE_ELEMENT_MULTIPLE);
     }
 

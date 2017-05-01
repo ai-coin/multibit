@@ -1,5 +1,12 @@
 package org.multibit.exchange;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.util.*;
+import javax.swing.*;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.IllegalCurrencyException;
 import org.joda.money.Money;
@@ -11,14 +18,6 @@ import org.multibit.model.exchange.ExchangeData;
 import org.multibit.model.exchange.ExchangeModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.swing.*;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.util.*;
 
 
 
@@ -524,6 +523,9 @@ public enum CurrencyConverter {
         try {
             BigDecimal parsedBTC = ((BigDecimal)formatter.parse(btcString)).movePointRight(NUMBER_OF_DECIMAL_POINTS_IN_A_BITCOIN);
             //log.debug("For locale " + controller.getLocaliser().getLocale().toString() +  ", '" + btcString + "' parses to " + parsedBTC.toPlainString());
+            if (BITCOIN_CURRENCY_UNIT == null) {
+              throw new RuntimeException("BITCOIN_CURRENCY_UNIT is null");
+            }
             btcAmount = Money.of(BITCOIN_CURRENCY_UNIT, parsedBTC);
             CurrencyConverterResult result = new CurrencyConverterResult();
             result.setBtcMoneyValid(true);

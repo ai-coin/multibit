@@ -17,6 +17,7 @@
 package com.google.bitcoin.core;
 
 import com.google.bitcoin.core.Transaction.SigHash;
+import static com.google.bitcoin.core.Utils.*;
 import com.google.bitcoin.core.Wallet.SendRequest;
 import com.google.bitcoin.crypto.KeyCrypter;
 import com.google.bitcoin.crypto.KeyCrypterException;
@@ -25,6 +26,8 @@ import com.google.bitcoin.crypto.TransactionSignature;
 import com.google.bitcoin.store.WalletProtobufSerializer;
 import com.google.bitcoin.utils.MockTransactionBroadcaster;
 import com.google.bitcoin.utils.TestUtils;
+import static com.google.bitcoin.utils.TestUtils.*;
+import com.google.bitcoin.utils.TestUtils.BlockPair;
 import com.google.bitcoin.utils.TestWithWallet;
 import com.google.bitcoin.utils.Threading;
 import com.google.bitcoin.wallet.DefaultCoinSelector;
@@ -32,30 +35,26 @@ import com.google.bitcoin.wallet.KeyTimeCoinSelector;
 import com.google.bitcoin.wallet.RiskAnalysis;
 import com.google.bitcoin.wallet.WalletTransaction;
 import com.google.bitcoin.wallet.WalletTransaction.Pool;
+import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.common.collect.Lists;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
+import java.math.BigInteger;
+import java.net.InetAddress;
+import java.security.SecureRandom;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.bitcoinj.wallet.Protos;
 import org.bitcoinj.wallet.Protos.ScryptParameters;
 import org.bitcoinj.wallet.Protos.Wallet.EncryptionType;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.util.encoders.Hex;
-
-import java.math.BigInteger;
-import java.net.InetAddress;
-import java.security.SecureRandom;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import static com.google.bitcoin.core.Utils.*;
-import static com.google.bitcoin.utils.TestUtils.*;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static org.junit.Assert.*;
 
 public class WalletTest extends TestWithWallet {
     private static final Logger log = LoggerFactory.getLogger(WalletTest.class);
@@ -2143,6 +2142,7 @@ public class WalletTest extends TestWithWallet {
         sendMoneyToWallet(wallet, CENT, key1.toAddress(params), AbstractBlockChain.NewBlockType.BEST_CHAIN);
         sendMoneyToWallet(wallet, CENT, key2.toAddress(params), AbstractBlockChain.NewBlockType.BEST_CHAIN);
         sendMoneyToWallet(wallet, CENT, key2.toAddress(params), AbstractBlockChain.NewBlockType.BEST_CHAIN);
+        Utils.setMockClock();
         Utils.rollMockClock(86400);
         Date compromiseTime = Utils.now();
         assertEquals(0, broadcaster.size());

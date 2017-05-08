@@ -80,6 +80,13 @@
     </repository>
   </repositories>
 
+  <distributionManagement>
+    <repository>
+      <id>nexus</id>
+      <url>http://162.243.117.82:8081/repository/maven-releases/</url>
+    </repository>
+  </distributionManagement>
+
   <build>
     <finalName>multibit</finalName>
     <resources>
@@ -685,7 +692,7 @@
     </dependency>
     <dependency>
       <groupId>com.google</groupId>
-      <artifactId>bitcoinj</artifactId>
+      <artifactId>bitcoinj-aicoin</artifactId>
       <version>0.11.2-MB-ALICE</version>
     </dependency>
     <dependency>
@@ -766,15 +773,6 @@
       <artifactId>jcsv</artifactId>
       <version>1.4.0</version>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>javafx</artifactId>
-            <version>2.2.40</version>
-      <systemPath>${basedir}/jfxrt.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
-    -->
     <dependency>
       <groupId>com.xeiam.xchange</groupId>
       <artifactId>xchange-bittrex</artifactId>

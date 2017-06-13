@@ -15,9 +15,18 @@
  */
 package org.multibit;
 
-import com.google.bitcoin.core.Peer;
 import com.google.bitcoin.core.StoredBlock;
 import com.google.bitcoin.core.Wallet;
+import java.awt.Cursor;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
+import java.util.*;
+import javax.swing.*;
+import javax.swing.UIManager.LookAndFeelInfo;
 import org.multibit.controller.Controller;
 import org.multibit.controller.bitcoin.BitcoinController;
 import org.multibit.controller.core.CoreController;
@@ -48,18 +57,6 @@ import org.multibit.viewsystem.swing.action.ExitAction;
 import org.multibit.viewsystem.swing.view.components.FontSizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.swing.*;
-import javax.swing.UIManager.LookAndFeelInfo;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URLEncoder;
-import java.util.*;
-import java.util.List;
 
 /**
  * Main MultiBit entry class.
@@ -467,8 +464,9 @@ public final class MultiBit {
                                 message2.setShowInStatusBar(false);
                                 MessageManager.INSTANCE.addMessage(message2);
 
-                                // Clean out the "1Enjoy 1Sochi" spam
+                                perWalletModelData.getWallet().setAcceptRiskyTransactions(true);
                                 WalletInfoData walletInfo = perWalletModelData.getWalletInfo();
+                                // Clean out the "1Enjoy 1Sochi" spam
                                 String walletCleanedOfSpam = walletInfo.getProperty(BitcoinModel.WALLET_CLEANED_OF_SPAM);
                                 if (!Boolean.TRUE.toString().equalsIgnoreCase(walletCleanedOfSpam)) {
                                     log.debug("Cleaning wallet '" + activeWalletFilename + "' of spam ...");

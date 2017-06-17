@@ -36,8 +36,8 @@ public enum CurrencyConverter {
     // Extra digits used in calculation.
     public static final int ADDITIONAL_CALCULATION_DIGITS = 16;
    
-    // This is the Bitcoin currency unit, denominated in satoshi with 0 decimal places.
-    public CurrencyUnit BITCOIN_CURRENCY_UNIT;
+    // This is the Bitcoin currency unit, denominated in satoshi with 8 decimal places.
+    public CurrencyUnit BITCOIN_CURRENCY_UNIT = CurrencyUnit.of("AIC");
     
     /**
      * The currency unit for the currency being converted.
@@ -94,8 +94,6 @@ public enum CurrencyConverter {
        this.controller = controller;
        
        try {
-           BITCOIN_CURRENCY_UNIT  = CurrencyUnit.of("AIC");
-           
            if (currencyCode != null && !"".equals(currencyCode)) {
                currencyUnit = CurrencyUnit.of(currencyCode);
            } else {

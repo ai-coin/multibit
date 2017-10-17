@@ -520,7 +520,7 @@ public class SendBitcoinConfirmPanel extends JPanel implements WalletBusyListene
             boolean singlePeerOverride = peers != null && peers.split(",").length == 1;
 
             if (thisPanel.sendBitcoinNowAction != null) {
-// A.I. Coin permits immediate sends
+// AI Coin permits immediate sends
 //                if (!singleNodeConnectionOverride && !singlePeerOverride && this.bitcoinController.getModel().getNumberOfConnectedPeers() < BitcoinModel.MINIMUM_NUMBER_OF_CONNECTED_PEERS_BEFORE_SEND_IS_ENABLED) {
 //                     // Disable send button
 //                    enableSend = false;

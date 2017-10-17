@@ -567,7 +567,7 @@ public class SingleWalletPanel extends JPanel implements ActionListener, FocusLi
                 + this.bitcoinController.getModel().getActivePerWalletModelData().getWalletDescription() + MultiBitFrame.SEPARATOR
                 + this.bitcoinController.getModel().getActivePerWalletModelData().getWalletFilename();
       }
-      mainFrame.setTitle("A.I. Coin - " + titleText);
+      mainFrame.setTitle("AI Coin - " + titleText);
     }
   }
 

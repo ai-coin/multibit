@@ -99,7 +99,7 @@ public class HelpAboutPanel extends JPanel implements Viewable {
         constraints.weightx = 1;
         constraints.weighty = 0.1;
         constraints.anchor = GridBagConstraints.CENTER;
-        MultiBitLabel versionLabel = new MultiBitLabel(versionText + " - A.I. Coin");
+        MultiBitLabel versionLabel = new MultiBitLabel(versionText + " - AI Coin");
         add(versionLabel, constraints);
 
         constraints.fill = GridBagConstraints.NONE;

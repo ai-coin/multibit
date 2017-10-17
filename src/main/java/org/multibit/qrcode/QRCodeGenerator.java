@@ -49,9 +49,9 @@ import org.multibit.model.bitcoin.BitcoinModel;
 
 /**
  * Class to generate QR codes
- * 
+ *
  * @author jim
- * 
+ *
  */
 public class QRCodeGenerator {
     private static final int QUIET_ZONE_SIZE = 4;
@@ -75,7 +75,7 @@ public class QRCodeGenerator {
 
     /**
      * generate a QR code
-     * 
+     *
      * @param address
      *            Bitcoin address to show
      * @param amount
@@ -98,17 +98,17 @@ public class QRCodeGenerator {
                     if (converterResult.isBtcMoneyValid()) {
                         bitcoinURI = BitcoinURI.convertToBitcoinURI(decodeAddress, converterResult.getBtcMoney().getAmount().toBigInteger(), label, null);
                     } else {
-                       // No parsable amount - show nothing.  
+                       // No parsable amount - show nothing.
                     }                } else {
                     bitcoinURI = BitcoinURI.convertToBitcoinURI(decodeAddress, null, label, null);
                 }
             }
             this.bitcoinController.getModel().setActiveWalletPreference(BitcoinModel.SEND_PERFORM_PASTE_NOW, "false");
         } catch (IllegalArgumentException e) {
-            //log.warn("The address '" + address + "' could not be converted to a A.I. Coinaddress. (IAE)");
+            //log.warn("The address '" + address + "' could not be converted to a AI Coin address. (IAE)");
             return null;
         } catch (AddressFormatException e) {
-            //log.warn("The address '" + address + "' could not be converted to a A.I. Coinaddress. (AFE)");
+            //log.warn("The address '" + address + "' could not be converted to a AI Coin address. (AFE)");
             return null;
         }
 
@@ -139,7 +139,7 @@ public class QRCodeGenerator {
                 byte imageValue = matrix.get(x, y);
                 for (int scaleX = 0; scaleX < scaleFactor; scaleX++) {
                     for (int scaleY = 0; scaleY < scaleFactor; scaleY++)  {
-                        image.setRGB(x * scaleFactor + scaleX, y * scaleFactor + scaleY, imageValue);                       
+                        image.setRGB(x * scaleFactor + scaleX, y * scaleFactor + scaleY, imageValue);
                     }
                 }
             }
@@ -151,7 +151,7 @@ public class QRCodeGenerator {
     /**
      * This object renders a QR Code as a ByteMatrix 2D array of greyscale
      * values.
-     * 
+     *
      * @author dswitkin@google.com (Daniel Switkin)
      */
     public ByteMatrix encode(String contents) throws WriterException {
@@ -161,7 +161,7 @@ public class QRCodeGenerator {
         }
 
         code = Encoder.encode(
-                contents, 
+                contents,
                 ErrorCorrectionLevel.L);
         return renderResult(code, QR_CODE_ELEMENT_MULTIPLE);
     }

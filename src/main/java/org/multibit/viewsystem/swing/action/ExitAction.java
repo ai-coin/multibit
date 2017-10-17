@@ -79,7 +79,7 @@ public class ExitAction extends AbstractExitAction {
         String shuttingDownTitle = bitcoinController.getLocaliser().getString("multiBitFrame.title.shuttingDown");
 
         if (mainFrame != null) {
-            mainFrame.setTitle("A.I. Coin - " + shuttingDownTitle);
+            mainFrame.setTitle("AI Coin - " + shuttingDownTitle);
 
             if (EventQueue.isDispatchThread()) {
                 mainFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -148,13 +148,13 @@ public class ExitAction extends AbstractExitAction {
                                         new String[] { loopPerWalletModelData.getWalletDescription() });
                             }
                             if (EventQueue.isDispatchThread()) {
-                                mainFrame.setTitle("A.I. Coin - " + titleText);
+                                mainFrame.setTitle("AI Coin - " + titleText);
                             } else {
                                 final String finalTitleText = titleText;
                                 SwingUtilities.invokeLater(new Runnable() {
                                     @Override
                                     public void run() {
-                                        mainFrame.setTitle("A.I. Coin - " + finalTitleText);
+                                        mainFrame.setTitle("AI Coin - " + finalTitleText);
                                     }
                                 });
                             }

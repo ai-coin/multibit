@@ -239,7 +239,7 @@ public class MultiBitFrame extends JFrame implements ViewSystem, ApplicationList
         setCursor(Cursor.WAIT_CURSOR);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        String titleText = "A.I. Coin - " + localiser.getString("multiBitFrame.title");
+        String titleText = "AI Coin - " + localiser.getString("multiBitFrame.title");
         if (this.bitcoinController.getModel().getActiveWallet() != null) {
             titleText = titleText + SEPARATOR + this.bitcoinController.getModel().getActivePerWalletModelData().getWalletDescription()
                     + SEPARATOR + this.bitcoinController.getModel().getActivePerWalletModelData().getWalletFilename();
@@ -1593,7 +1593,7 @@ public class MultiBitFrame extends JFrame implements ViewSystem, ApplicationList
                 }
             }
 
-            String titleText = "A.I. Coin - " + localiser.getString("multiBitFrame.title");
+            String titleText = "AI Coin - " + localiser.getString("multiBitFrame.title");
             if (this.bitcoinController.getModel().getActiveWallet() != null) {
                 titleText = titleText + SEPARATOR + this.bitcoinController.getModel().getActivePerWalletModelData().getWalletDescription()
                         + SEPARATOR + this.bitcoinController.getModel().getActivePerWalletModelData().getWalletFilename();
